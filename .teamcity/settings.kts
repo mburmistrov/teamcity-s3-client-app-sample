@@ -33,6 +33,7 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2023.11"
 
 project {
+
     vcsRoot(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
 
     buildType(Build)
@@ -128,6 +129,7 @@ object DeployToAws : BuildType({
         }
         provideAwsCredentials {
             awsConnectionId = "AmazonWebServicesAws"
+            sessionDuration = "61"
         }
     }
 
