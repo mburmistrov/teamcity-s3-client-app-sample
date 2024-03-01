@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="a99ae5af-ecfa-4a89-94e0-9aecb42cd56c" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Build</name>
+  <description />
+  <settings>
+    <options>
+      <option name="artifactRules" value="dist =&gt; dist.zip" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="TRIGGER_4" />
+    </disabled-settings>
+    <parameters />
+    <build-runners>
+      <runner id="nodejs_runner" name="Install deps" type="nodejs-runner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="node:18.19.1" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="shellScript" value="npm ci" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="nodejs_runner_1" name="Lint" type="nodejs-runner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="node:18.19.1" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="shellScript"><![CDATA[npm install eslint-teamcity --no-save
+npm run lint -- --format ./node_modules/eslint-teamcity/index.js]]></param>
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="nodejs_runner_2" name="Build" type="nodejs-runner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="node:18.19.1" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="shellScript" value="npm run build" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="TeamcityS3ClientAppSample_HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_4" type="vcsTrigger">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="perfmon" type="perfmon">
+        <parameters>
+          <param name="teamcity.perfmon.feature.enabled" value="true" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+
