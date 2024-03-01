@@ -36,8 +36,21 @@ project {
 
     vcsRoot(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
 
+    buildType(InstallDeps)
+    buildType(Lint)
+    buildType(Test)
     buildType(Build)
     buildType(DeployToAws)
+
+    sequential {
+        buildType(InstallDeps)
+        parallel {
+            buildType(Lint)
+            buildType(Test)
+        }
+        buildType(Build)
+        buildType(DeployToAws)
+    }
 
     features {
         awsConnection {
@@ -53,14 +66,8 @@ project {
     }
 }
 
-object Build : BuildType({
-    name = "Build"
-
-    artifactRules = "dist => dist.zip"
-
-    vcs {
-        root(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
-    }
+object InstallDeps : BuildType({
+    name = "InstallDeps"
 
     steps {
         nodeJS {
@@ -69,6 +76,18 @@ object Build : BuildType({
             shellScript = "npm ci"
             dockerImage = "node:18.19.1"
         }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
+
+object Lint : BuildType({
+    name = "Lint"
+
+    steps {
         nodeJS {
             name = "Lint"
             id = "nodejs_runner_1"
@@ -78,6 +97,38 @@ object Build : BuildType({
             """.trimIndent()
             dockerImage = "node:18.19.1"
         }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
+
+object Test : BuildType({
+    name = "Test"
+
+    steps {
+        nodeJS {
+            name = "Test"
+            id = "nodejs_runner_1"
+            shellScript = "npm run test:unit"
+            dockerImage = "node:18.19.1"
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
+
+object Build : BuildType({
+    name = "Build"
+
+    artifactRules = "dist => dist.zip"
+
+    steps {
         nodeJS {
             name = "Build"
             id = "nodejs_runner_2"
