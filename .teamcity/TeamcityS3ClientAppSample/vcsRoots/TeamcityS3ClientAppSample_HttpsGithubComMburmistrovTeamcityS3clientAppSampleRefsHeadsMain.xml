@@ -3,13 +3,15 @@
   <name>https://github.com/mburmistrov/teamcity-s3-client-app-sample#refs/heads/main</name>
   <param name="agentCleanFilesPolicy" value="ALL_UNTRACKED" />
   <param name="agentCleanPolicy" value="ON_BRANCH_CHANGE" />
-  <param name="authMethod" value="ANONYMOUS" />
+  <param name="authMethod" value="PASSWORD" />
   <param name="branch" value="refs/heads/main" />
   <param name="ignoreKnownHosts" value="true" />
+  <param name="secure:password" value="credentialsJSON:d294ecca-25ab-4916-9e71-c221dbb9facf" />
   <param name="submoduleCheckout" value="CHECKOUT" />
   <param name="teamcity:branchSpec" value="refs/heads/*" />
   <param name="url" value="https://github.com/mburmistrov/teamcity-s3-client-app-sample" />
   <param name="useAlternates" value="AUTO" />
+  <param name="username" value="mburmistrov" />
   <param name="usernameStyle" value="USERID" />
 </vcs-root>
 
