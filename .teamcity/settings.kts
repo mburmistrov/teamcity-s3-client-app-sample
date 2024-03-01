@@ -33,7 +33,6 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2023.11"
 
 project {
-
     vcsRoot(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
 
     buildType(Build)
@@ -108,7 +107,7 @@ object DeployToAws : BuildType({
 
     steps {
         script {
-            name = "Deploy (1)"
+            name = "Deploy_"
             id = "Deploy_1"
             scriptContent = """
                 cd dist
