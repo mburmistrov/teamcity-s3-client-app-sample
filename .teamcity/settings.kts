@@ -69,6 +69,10 @@ project {
 object InstallDeps : BuildType({
     name = "InstallDeps"
 
+    vcs {
+        root(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
+    }
+
     steps {
         nodeJS {
             name = "Install deps"
@@ -86,6 +90,10 @@ object InstallDeps : BuildType({
 
 object Lint : BuildType({
     name = "Lint"
+
+    vcs {
+        root(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
+    }
 
     steps {
         nodeJS {
@@ -108,6 +116,10 @@ object Lint : BuildType({
 object Test : BuildType({
     name = "Test"
 
+    vcs {
+        root(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
+    }
+
     steps {
         nodeJS {
             name = "Test"
@@ -125,6 +137,10 @@ object Test : BuildType({
 
 object Build : BuildType({
     name = "Build"
+
+    vcs {
+        root(HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain)
+    }
 
     artifactRules = "dist => dist.zip"
 
