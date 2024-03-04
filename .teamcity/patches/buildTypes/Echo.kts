@@ -17,7 +17,7 @@ create(DslContext.projectId, BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "echo 667767"
+            scriptContent = "echo %system.agent.name%"
         }
     }
 }))
