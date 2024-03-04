@@ -17,7 +17,7 @@ create(DslContext.projectId, BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "echo %system.agent.name%"
+            scriptContent = "echo %teamcity.build.vcs.branch%"
         }
     }
 }))
