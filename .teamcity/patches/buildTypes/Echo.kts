@@ -14,6 +14,10 @@ create(DslContext.projectId, BuildType({
     id("Echo")
     name = "Echo"
 
+    vcs {
+        root(RelativeId("HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain"))
+    }
+
     steps {
         script {
             id = "simpleRunner"
