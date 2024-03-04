@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -12,5 +13,12 @@ in the root project, and delete the patch script.
 create(DslContext.projectId, BuildType({
     id("Echo")
     name = "Echo"
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = "echo 667767"
+        }
+    }
 }))
 
