@@ -24,7 +24,8 @@ changeBuildType(RelativeId("Test")) {
             clearConditions()
             shellScript = """
                 if [ -n "%teamcity.build.vcs.branch.TeamcityS3ClientAppSample_HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain%.tezzzme%" ]; then
-                   npm run test:unit
+                  echo "42"
+                  npm run test:unit
                 else
                     echo "Skipping build as the required tag is not present."
                 fi
