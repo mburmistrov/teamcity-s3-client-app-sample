@@ -10,6 +10,11 @@ accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Build")) {
     dependencies {
+        remove(RelativeId("Test")) {
+            snapshot {
+            }
+        }
+
         add(RelativeId("InstallDeps")) {
             snapshot {
             }
