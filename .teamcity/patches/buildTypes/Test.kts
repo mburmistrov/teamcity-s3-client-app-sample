@@ -23,7 +23,7 @@ changeBuildType(RelativeId("Test")) {
         update<NodeJSBuildStep>(0) {
             clearConditions()
             shellScript = """
-                if [ -n "%teamcity.build.vcs.branch.TeamcityS3ClientAppSample_HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain%.tezzzme%" ]; then
+                if [ -n "%teamcity.build.vcs.branch.TeamcityS3ClientAppSample_HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain%.tezzzzme%" ]; then
                   echo "42"
                   npm run test:unit
                 else
