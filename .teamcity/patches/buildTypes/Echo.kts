@@ -21,7 +21,14 @@ create(DslContext.projectId, BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "git describe --tags %build.vcs.number%"
+            scriptContent = """
+                last_commit_tag = git describe --tags %build.vcs.number%
+                if [ "${'$'}last_commit_tag" == "tezzzme" ]; then
+                  echo "has tezzzme tag"
+                else
+                  echo "dont have tezzzme tag"
+                fi
+            """.trimIndent()
         }
     }
 }))
