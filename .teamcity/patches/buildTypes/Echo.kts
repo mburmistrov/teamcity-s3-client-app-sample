@@ -21,7 +21,7 @@ create(DslContext.projectId, BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "echo %teamcity.build.vcs.branch.TeamcityS3ClientAppSample_HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain%"
+            scriptContent = "echo %teamcity.build.vcs.branch.TeamcityS3ClientAppSample_HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain.tezzzme%"
         }
     }
 }))
