@@ -3,7 +3,6 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.NodeJSBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -30,14 +29,6 @@ changeBuildType(RelativeId("Test")) {
                     echo "Skipping build as the required tag is not present."
                 fi
             """.trimIndent()
-        }
-    }
-
-    triggers {
-        add {
-            vcs {
-                branchFilter = "+:refs/tags/tezzzme"
-            }
         }
     }
 }
