@@ -24,7 +24,6 @@ create(DslContext.projectId, BuildType({
             scriptContent = """
                 last_commit_tag = git describe --tags %build.vcs.number%
                 echo "123"
-                echo  "$last_commit_tag"
                 echo  "${'$'}$last_commit_tag"
                 echo "321"
                 if [ "${'$'}last_commit_tag" == "tezzzme" ]; then
