@@ -16,7 +16,7 @@ create(DslContext.projectId, BuildType({
 
     params {
         param("env.LANG", "en-us")
-        param("env.DEFAULT_LANG", "zh-cn")
+        param("env.DEFAULT_LANG", "en-us")
     }
 
     vcs {
