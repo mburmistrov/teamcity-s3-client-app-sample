@@ -14,6 +14,10 @@ create(DslContext.projectId, BuildType({
     id("Echo")
     name = "Echo"
 
+    params {
+        param("last_commit_tag", "123")
+    }
+
     vcs {
         root(RelativeId("HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain"))
     }
