@@ -14,6 +14,10 @@ create(DslContext.projectId, BuildType({
     id("Echo")
     name = "Echo"
 
+    params {
+        param("env.LANG", "en-us")
+    }
+
     vcs {
         root(RelativeId("HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain"))
     }
