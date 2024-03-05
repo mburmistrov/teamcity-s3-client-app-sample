@@ -29,9 +29,6 @@ create(DslContext.projectId, BuildType({
                 #!/bin/bash
                 set -e
                 
-                DEFAULT_LANG="en-us"  # Set your default language here
-                LANG="your_language"  # Set your desired language here
-                
                 if [ "${'$'}DEFAULT_LANG" == "en-us" ]; then
                     INDEX_NAME="index_${'$'}LANG"
                 elif [ "${'$'}DEFAULT_LANG" == "zh-cn" ]; then
