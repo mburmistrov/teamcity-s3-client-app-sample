@@ -22,15 +22,32 @@ create(DslContext.projectId, BuildType({
         script {
             id = "simpleRunner"
             scriptContent = """
-                set last_commit_tag = git describe --tags %build.vcs.number%
-                                echo "123"
-                                echo %last_commit_tag%
-                                echo "321"
-                                if [ %last_commit_tag% == "tezzzme" ]; then
-                                  echo "has tezzzme tag"
-                                else
-                                  echo "dont have tezzzme tag"
-                                fi
+                #!/bin/bash
+                set -e
+                
+                DEFAULT_LANG="en-us"  # Set your default language here
+                LANG="your_language"  # Set your desired language here
+                
+                if [ "${'$'}DEFAULT_LANG" == "en-us" ]; then
+                    INDEX_NAME="index_${'$'}LANG"
+                elif [ "${'$'}DEFAULT_LANG" == "zh-cn" ]; then
+                    INDEX_NAME="index_cn_${'$'}LANG"
+                else
+                    echo "Unsupported default language: ${'$'}DEFAULT_LANG"
+                
+                fi
+                
+                echo "The INDEX_NAME is: ${'$'}INDEX_NAME"
+                
+                # set last_commit_tag = git describe --tags %build.vcs.number%
+                #                echo "123"
+                #                echo %last_commit_tag%
+                #                echo "321"
+                #                if [ %last_commit_tag% == "tezzzme" ]; then
+                #                  echo "has tezzzme tag"
+                #                else
+                #                  echo "dont have tezzzme tag"
+                #fi
             """.trimIndent()
         }
     }
