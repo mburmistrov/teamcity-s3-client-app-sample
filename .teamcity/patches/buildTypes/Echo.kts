@@ -16,6 +16,7 @@ create(DslContext.projectId, BuildType({
 
     params {
         param("env.LANG", "en-us")
+        param("last_commit_tag", "123")
         param("env.DEFAULT_LANG", "en-us")
     }
 
