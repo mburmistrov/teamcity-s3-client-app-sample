@@ -41,7 +41,6 @@ create(DslContext.projectId, BuildType({
                 
                 # set last_commit_tag = git describe --tags %build.vcs.number%
                 #                echo "123"
-                #                echo %last_commit_tag%
                 #                echo "321"
                 #                if [ %last_commit_tag% == "tezzzme" ]; then
                 #                  echo "has tezzzme tag"
