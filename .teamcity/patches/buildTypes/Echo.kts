@@ -31,7 +31,7 @@ create(DslContext.projectId, BuildType({
                 #!/bin/bash
                 set -e
                 
-                LAST_COMMIT_TAGS = git describe --tags %build.vcs.number%
+                LAST_COMMIT_TAGS=${'$'}(git describe --tags --abbrev=0)
                 echo "123"
                 echo "${'$'}LAST_COMMIT_TAGS"
                 echo "321"
