@@ -42,14 +42,15 @@ create(DslContext.projectId, BuildType({
                 
                 echo "The INDEX_NAME is: ${'$'}INDEX_NAME"
                 
-                # set last_commit_tag = git describe --tags %build.vcs.number%
-                #                echo "123"
-                #                echo "321"
-                #                if [ %last_commit_tag% == "tezzzme" ]; then
-                #                  echo "has tezzzme tag"
-                #                else
-                #                  echo "dont have tezzzme tag"
-                #fi
+                LAST_COMMIT_TAGS = git describe --tags %build.vcs.number%
+                echo "123"
+                echo "${'$'}LAST_COMMIT_TAGS"
+                echo "321"
+                if [ "${'$'}LAST_COMMIT_TAGS" == "tezzzme" ]; then
+                  echo "has tezzzme tag"
+                 else
+                  echo "dont have tezzzme tag"
+                fi
             """.trimIndent()
         }
     }
