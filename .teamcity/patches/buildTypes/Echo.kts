@@ -35,7 +35,7 @@ create(DslContext.projectId, BuildType({
                 echo "123"
                 echo "${'$'}LAST_COMMIT_TAGS"
                 echo "321"
-                if [ "${'$'}LAST_COMMIT_TAGS" == "tezzzme" ]; then
+                if [ "${'$'}LAST_COMMIT_TAGS" == "ozozo" ]; then
                   echo "has tezzzme tag"
                  else
                   echo "dont have tezzzme tag"
