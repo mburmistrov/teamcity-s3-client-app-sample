@@ -31,17 +31,6 @@ create(DslContext.projectId, BuildType({
                 #!/bin/bash
                 set -e
                 
-                if [ "${'$'}DEFAULT_LANG" == "en-us" ]; then
-                    INDEX_NAME="index_${'$'}LANG"
-                elif [ "${'$'}DEFAULT_LANG" == "zh-cn" ]; then
-                    INDEX_NAME="index_cn_${'$'}LANG"
-                else
-                    echo "Unsupported default language: ${'$'}DEFAULT_LANG"
-                
-                fi
-                
-                echo "The INDEX_NAME is: ${'$'}INDEX_NAME"
-                
                 LAST_COMMIT_TAGS = git describe --tags %build.vcs.number%
                 echo "123"
                 echo "${'$'}LAST_COMMIT_TAGS"
