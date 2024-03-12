@@ -11,6 +11,11 @@ To apply the patch, change the buildType with id = 'Lint'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Lint")) {
+    check(name == "Lint") {
+        "Unexpected name: '$name'"
+    }
+    name = "i18n Staging"
+
     expectSteps {
         nodeJS {
             name = "Lint"
