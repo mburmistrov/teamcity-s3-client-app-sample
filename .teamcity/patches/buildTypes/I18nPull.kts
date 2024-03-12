@@ -3,7 +3,6 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -20,19 +19,6 @@ create(DslContext.projectId, BuildType({
     }
 
     steps {
-        script {
-            name = "i18n pull"
-            id = "i18n_pull"
-            scriptContent = """
-                if [ -e "./i18n-staging-branches/%teamcity.build.branch%" ]; then
-                  # npm run i18n-pull
-                  echo "RUN i18n pull"
-                else
-                  echo "🏎️ skip i18n pull"
-                fi
-            """.trimIndent()
-            dockerImage = "node:18.19.1"
-        }
         nodeJS {
             name = "i18n pull (1)"
             id = "i18n_pull_1"
