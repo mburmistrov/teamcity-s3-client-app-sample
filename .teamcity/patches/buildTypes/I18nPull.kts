@@ -37,8 +37,6 @@ create(DslContext.projectId, BuildType({
     dependencies {
         snapshot(RelativeId("I18nPush")) {
         }
-        snapshot(RelativeId("InstallDeps")) {
-        }
     }
 }))
 
