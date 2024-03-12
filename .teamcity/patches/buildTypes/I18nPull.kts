@@ -22,7 +22,13 @@ create(DslContext.projectId, BuildType({
         script {
             name = "i18n pull"
             id = "i18n_pull"
-            scriptContent = "npm run i18n-pull"
+            scriptContent = """
+                if [ -e "./i18n-staging-branches/%teamcity.build.branch%" ]; then
+                  npm run i18n-pull
+                else
+                  echo "🏎️ skip i18n pull"
+                fi
+            """.trimIndent()
             dockerImage = "node:18.19.1"
         }
     }
