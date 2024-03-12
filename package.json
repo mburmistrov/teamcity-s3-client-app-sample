@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "i18n-push": "scripty",
+    "i18n-pull": "scripty",
+    "i18n-staging-branch": "scripty"
   },
   "dependencies": {
     "vue": "^3.4.15"
@@ -23,6 +26,7 @@
     "eslint-plugin-vue": "^9.17.0",
     "jsdom": "^24.0.0",
     "prettier": "^3.0.3",
+    "scripty": "^2.1.1",
     "vite": "^5.0.11",
     "vitest": "^1.2.2"
   }
