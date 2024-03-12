@@ -15,5 +15,10 @@ changeBuildType(RelativeId("Build")) {
             }
         }
 
+        add(RelativeId("I18nPull")) {
+            snapshot {
+            }
+        }
+
     }
 }
