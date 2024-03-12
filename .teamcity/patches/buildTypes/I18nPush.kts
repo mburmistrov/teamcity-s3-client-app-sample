@@ -12,5 +12,9 @@ in the root project, and delete the patch script.
 create(DslContext.projectId, BuildType({
     id("I18nPush")
     name = "i18n Push"
+
+    vcs {
+        root(RelativeId("HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain"))
+    }
 }))
 
