@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-REMOTE_BRANCH=$(git config --get branch.$branch.remote 2>/dev/null)
+REMOTE_BRANCH=$(git config --get branch.$BRANCH.remote 2>/dev/null)
 I18N_STAGING_BRANCH_FILE_PATH="./i18n-staging-branches/${BRANCH}"
-if [ -z "$remote" ]; then
+if [ -z "$REMOTE_BRANCH" ]; then
   # Branch does not have a remote counterpart
   PUSH_STRATEGY="no_remote"
-elif [ "$(git rev-list --count $branch@{upstream}..HEAD 2>/dev/null)" -gt 0 ]; then
+elif [ "$(git rev-list --count $BRANCH@{upstream}..HEAD 2>/dev/null)" -gt 0 ]; then
   # Branch has unpushed commits
   PUSH_STRATEGY="has_unpushed_commits"
 else
@@ -15,7 +15,7 @@ else
 fi
 
 if [ -e "./i18n-staging-branches/${BRANCH}" ]; then
-  echo -e "\033[1;32mThe branch is already added to i18-staging-branches, please make sure that ${I18N_STAGING_BRANCH_FILE_PATH} file is pushed to the remote branch.\033[0m\n"
+  echo -e "\033[1;32mThe branch is already added to i18n-staging-branches, please make sure that ${I18N_STAGING_BRANCH_FILE_PATH} file is pushed to the remote branch.\033[0m\n"
   exit 0;
 fi
 
@@ -23,12 +23,12 @@ echo "Adding the branch to i18n-staging-branches\n"
 echo "This file ensures that ${BRANCH} branch is using i18n staging. The contents of the file don't matter -- just it's name. Feel free to merge it -- it will autocleaned." > ${I18N_STAGING_BRANCH_FILE_PATH}
 git add ${I18N_STAGING_BRANCH_FILE_PATH}
 git commit ${I18N_STAGING_BRANCH_FILE_PATH} -m "Add branch to i18n-staging-branches"
-echo "Committed the branch to i18n-staging-branches\n"
+echo -e "\033[1;33mCommitted the branch to i18n-staging-branches\033[0m\n"
 
 if [ "$PUSH_STRATEGY" == "no_remote" ]; then
   # Branch does not have a remote counterpart
   echo -e "\033[1;32m[SUCCESS, NO PUSH] Current branch has no remote. When you'll push the branch, it will have i18n staging.\033[0m\n"
-elif [ "$(git rev-list --count $branch@{upstream}..HEAD 2>/dev/null)" -gt 0 ]; then
+elif [ "$PUSH_STRATEGY" == "has_unpushed_commits" ]; then
   # Branch has unpushed commits
   echo -e "\033[1;32m[SUCCESS, NO PUSH] You have unpushed commits. Added the commit for i18n staging, please push it to have i18n staging.\033[0m\n"
 else
