@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -15,6 +16,15 @@ create(DslContext.projectId, BuildType({
 
     vcs {
         root(RelativeId("HttpsGithubComMburmistrovTeamcityS3clientAppSampleRefsHeadsMain"))
+    }
+
+    steps {
+        script {
+            name = "i18n push"
+            id = "i18n_push"
+            scriptContent = "npm run i18n-push"
+            dockerImage = "node:18.19.1"
+        }
     }
 }))
 
