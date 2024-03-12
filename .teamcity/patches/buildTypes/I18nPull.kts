@@ -26,5 +26,10 @@ create(DslContext.projectId, BuildType({
             dockerImage = "node:18.19.1"
         }
     }
+
+    dependencies {
+        snapshot(RelativeId("I18nPush")) {
+        }
+    }
 }))
 
