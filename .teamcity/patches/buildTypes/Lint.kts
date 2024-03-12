@@ -29,16 +29,6 @@ changeBuildType(RelativeId("Lint")) {
             conditions {
                 doesNotContain("teamcity.build.branch", "skip-lint")
             }
-            shellScript = """
-                ls
-                # Check if the file exists
-                if [ -e "./linted-branches/%teamcity.build.branch%" ]; then
-                  npm install eslint-teamcity --no-save
-                  npm run lint -- --format ./node_modules/eslint-teamcity/index.js
-                else
-                  echo "skip lint"
-                fi
-            """.trimIndent()
         }
     }
 }
