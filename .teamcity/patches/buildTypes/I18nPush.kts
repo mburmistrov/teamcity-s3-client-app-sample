@@ -20,7 +20,7 @@ create(DslContext.projectId, BuildType({
 
     steps {
         nodeJS {
-            name = "i18n push (1)"
+            name = "i18n push"
             id = "i18n_push_1"
             shellScript = """
                 if [ -e "./i18n-staging-branches/%teamcity.build.branch%" ]; then
